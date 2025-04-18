@@ -15,10 +15,6 @@ export default {
       type: String,
       default: () => ""
     },
-    hasBack: {
-      type: Boolean,
-      default: () => true
-    },
     hideTitle: {
       type: Boolean,
       default: () => false
@@ -29,12 +25,12 @@ export default {
   },
   methods: {
     onBack() {
-      this.$emit('input', false)
+      this.$emit('input', false);
     }
   },
   computed: {
     placeholderHeight() {
-      return (getApp().globalData.statusBarHeight || 0) + (this.hideTitle ? 0 : 45)
+      return (getApp().globalData.statusBarHeight || 0) + (this.hideTitle ? 0 : 45);
     },
   }
 }

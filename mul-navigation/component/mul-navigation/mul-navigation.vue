@@ -5,7 +5,7 @@
       <slot name="home"></slot>
     </view>
     <view class="nav-destination-wrapper" :style="[rightStyle]">
-      <slot name="default"></slot>
+      <slot v-if="value" name="default"></slot>
     </view>
   </view>
 </template>
@@ -41,7 +41,8 @@ export default {
       default: () => true
     },
     self: {
-      type: Boolean
+      type: Boolean,
+      default: () => true
     },
     other: {
       type: Boolean,
@@ -49,31 +50,34 @@ export default {
     }
   },
   methods: {
-    onBack() {
+    onBack(tag) {
       if (this.showParallel) {
-        this.showParallel = false
-      } else if (this.showSelf) {
-        this.showSelf = false
+        this.showParallel = false;
+        return true;
+      } else if (this.showSelf && this.$listeners['update:self']) {
+        this.showSelf = false;
+        return true;
       } else {
-        uni.navigateBack()
+        !tag && uni.navigateBack();
+        return false;
       }
     }
   },
   computed: {
     placeholderHeight() {
-      return (getApp().globalData.statusBarHeight || 0) + (this.hideTitle ? 0 : 45)
+      return (getApp().globalData.statusBarHeight || 0) + (this.hideTitle ? 0 : 45);
     },
     homeParallelWidth() {
-      return this.half ? '50%' : '40%'
+      return this.half ? '50%' : '40%';
     },
     destinationParallelWidth() {
-      return this.half ? '50%' : '60%'
+      return this.half ? '50%' : '60%';
     },
     destinationParallelLeft() {
-      return this.half ? '50%' : '40%'
+      return this.half ? '50%' : '40%';
     },
     isPhone() {
-      return this.device === 'phone'
+      return this.device === 'phone';
     },
     leftStyle() {
       return {
@@ -89,27 +93,26 @@ export default {
     },
     showParallel: {
       get() {
-        return this.value
+        return this.value;
       },
       set(val) {
-        this.$emit('input', val)
+        this.$emit('input', val);
       }
     },
     showSelf: {
       get() {
-        return !!this.self
+        return !!this.self;
       },
       set(val) {
-        this.$emit('update:self', val)
+        this.$emit('update:self', val);
       }
     }
   },
-  watch: {
-    self: {
-      handler(newVal) {
-        newVal ? this.$navigation.push(this) : this.$navigation.pop();
-      }
-    }
+  created() {
+    this.$navigation.push(this);
+  },
+  beforeDestroy() {
+    this.$navigation.pop();
   }
 }
 </script>

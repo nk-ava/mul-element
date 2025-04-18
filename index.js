@@ -1,3 +1,7 @@
 import NavDestination from "./mul-navigation";
 
-export {NavDestination}
+export default {
+    install(Vue, options) {
+        Vue.use(NavDestination, options);
+    }
+}

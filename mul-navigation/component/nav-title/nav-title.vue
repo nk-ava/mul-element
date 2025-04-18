@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     onBack() {
-      this.value ? this.$emit('back') : uni.navigateBack()
+      this.value ? this.$emit('back') : uni.navigateBack();
     }
   }
 }
