@@ -13,6 +13,7 @@ export default {
         // 全局储存mul-navigation实例
         Vue.prototype.$navigation = [];
         MulNavigation.mixins = [options.getDevice];
+        NavDestination.mixins = [options.getDevice];
         // 全局引入组件
         Vue.component("NavDestination", NavDestination);
         Vue.component("MulNavigation", MulNavigation);
