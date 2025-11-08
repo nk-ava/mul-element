@@ -15,7 +15,7 @@ import NavTitle from "../nav-title/nav-title.vue";
 
 export default {
   name: "MulNavigation",
-  options: {styleIsolation: 'shared'},
+  // options: {styleIsolation: 'shared'},
   components: {
     NavTitle
   },

@@ -1,6 +1,7 @@
 import MulWaterflow from "./mul-waterflow/mul-waterflow.vue";
 import MulNavigation from "./mul-navigation/component/mul-navigation/mul-navigation.vue";
 import NavDestination from "./mul-navigation/component/nav-destination/nav-destination.vue";
+import MulImagePreview from "./mul-image-preview/image-preview.vue";
 
 const components = [
     MulNavigation,
@@ -23,4 +24,10 @@ export default {
             Vue.component(item.name, item);
         });
     }
+}
+
+export {
+    MulNavigation,
+    MulWaterflow,
+    MulImagePreview
 }

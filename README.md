@@ -109,7 +109,3 @@ export default {
 }
 </style>
 ```
-#### screenshot
-![img01.png](screenshot/img01.png)
-![img02.png](screenshot/img02.png)
-![img03.png](screenshot/img03.png)

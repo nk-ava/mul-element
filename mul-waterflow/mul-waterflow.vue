@@ -1,9 +1,9 @@
 <template>
-  <view class="mul-waterflow" :style="[{height: totalHeight }]">
-    <view class="flow-item" v-for="(item, index) in list" :key="index" :style="[itemStyles[index]]">
+  <view class="mul-waterflow" :style="{height: totalHeight }">
+    <view class="flow-item" v-for="(item, index) in list" :key="index" :style="itemStyles[index]">
       <slot name="item" :data="item"></slot>
     </view>
-    <view style="position: fixed; left: 10px; top: 20px; background-color: #007aff" @tap="reFlow">重排</view>
+    <view style="position: fixed; right: 10px; bottom: 20px; background-color: #007aff" @tap="reFlow">重排</view>
   </view>
 </template>
 
